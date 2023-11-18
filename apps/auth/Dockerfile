@@ -24,8 +24,10 @@ COPY package*.json ./
 
 COPY yarn.lock ./
 
-RUN yarn install --prod
+RUN yarn install --production
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/auth/main"]
+CMD ["yarn", "start:dev:auth"]
+# CMD ["node", "dist/apps/auth/main"]
+# CMD yarn --cwd usr/src/app start:dev
