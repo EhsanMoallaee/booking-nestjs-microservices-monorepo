@@ -6,7 +6,7 @@ COPY package*.json ./
 
 COPY yarn.lock ./
 
-RUN yarn
+RUN yarn install
 
 COPY . .
 
@@ -24,7 +24,7 @@ COPY package*.json ./
 
 COPY yarn.lock ./
 
-RUN yarn install --production
+RUN yarn install --production=true
 
 COPY --from=development /usr/src/app/dist ./dist
 
