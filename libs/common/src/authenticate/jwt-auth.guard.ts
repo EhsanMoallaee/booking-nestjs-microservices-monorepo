@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 import { AUTH_SERVICE } from '../constants/services';
 
 @Injectable()
-export class JwtAuthGuard implements CanActivate {
+export class CommonJwtAuthGuard implements CanActivate {
     constructor(
         @Inject(AUTH_SERVICE) private readonly authClient: ClientProxy
     ) {}
