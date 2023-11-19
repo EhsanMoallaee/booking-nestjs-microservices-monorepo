@@ -5,7 +5,7 @@ import {
     Inject
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { Observable, tap, map } from 'rxjs';
+import { Observable, tap, map, catchError, of } from 'rxjs';
 import { AUTH_SERVICE } from '../constants/services';
 import { CommonUserDto } from '../dtos';
 
@@ -29,7 +29,8 @@ export class CommonJwtAuthGuard implements CanActivate {
                 tap((res) => {
                     context.switchToHttp().getRequest().user = res;
                 }),
-                map(() => true)
+                map(() => true),
+                catchError(() => of(false))
             );
     }
 }
