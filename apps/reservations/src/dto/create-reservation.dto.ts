@@ -7,7 +7,7 @@ import {
     IsNotEmptyObject,
     ValidateNested
 } from 'class-validator';
-import { CardDto } from './card.dto';
+import { CreateChargeDto } from '@app/common';
 
 export class CreateReservationDto {
     @IsDate()
@@ -29,5 +29,5 @@ export class CreateReservationDto {
     @IsDefined()
     @IsNotEmptyObject()
     @ValidateNested()
-    card: CardDto;
+    charge: CreateChargeDto;
 }
