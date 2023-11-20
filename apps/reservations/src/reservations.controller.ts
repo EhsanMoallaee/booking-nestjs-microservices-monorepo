@@ -23,7 +23,7 @@ export class ReservationsController {
         @Body() createReservationDto: CreateReservationDto,
         @currentUser() user: CommonUserDto
     ) {
-        return this.reservationsService.create(createReservationDto, user._id);
+        return this.reservationsService.create(createReservationDto, user);
     }
 
     @UseGuards(CommonJwtAuthGuard)
