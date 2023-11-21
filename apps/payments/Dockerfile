@@ -3,12 +3,13 @@ FROM node:20-alpine as development
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
 COPY yarn.lock ./
+COPY tsconfig.json tsconfig.json
 
 RUN yarn install
 
-COPY . .
+COPY apps/payments apps/payments
+COPY libs libs
 
 RUN yarn build
 
