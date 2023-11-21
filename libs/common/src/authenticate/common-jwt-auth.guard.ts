@@ -7,7 +7,7 @@ import {
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable, tap, map, catchError, of } from 'rxjs';
 import { AUTH_SERVICE } from '../constants/services';
-import { CommonUserDto } from '../dtos';
+import { ICommonUser } from '../dtos';
 
 @Injectable()
 export class CommonJwtAuthGuard implements CanActivate {
@@ -24,7 +24,7 @@ export class CommonJwtAuthGuard implements CanActivate {
         }
 
         return this.authClient
-            .send<CommonUserDto>('authenticate', { Authentication: jwt })
+            .send<ICommonUser>('authenticate', { Authentication: jwt })
             .pipe(
                 tap((res) => {
                     context.switchToHttp().getRequest().user = res;

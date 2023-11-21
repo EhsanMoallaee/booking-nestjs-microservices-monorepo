@@ -1,9 +1,9 @@
-// import { UserDocument } from './../../../../apps/auth/src/users/models/user.schema';
+import { UserDocument } from '@app/common';
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { CommonUserDto } from '../dtos';
+// import { ICommonUser } from '../dtos';
 // import { UserDocument } from '../users/models/user.schema';s
 
-const getCurrentUserByContext = (context: ExecutionContext): CommonUserDto => {
+const getCurrentUserByContext = (context: ExecutionContext): UserDocument => {
     return context.switchToHttp().getRequest().user;
 };
 
