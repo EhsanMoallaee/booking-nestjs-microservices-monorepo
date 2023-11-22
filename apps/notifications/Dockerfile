@@ -32,5 +32,5 @@ RUN yarn install --production=true
 COPY --from=development /usr/src/app/dist ./dist
 
 CMD ["yarn", "start:dev:notifications"]
-# CMD ["node", "dist/apps/auth/main"]
+# CMD ["node", "dist/apps/notifications/main"]
 # CMD yarn --cwd usr/src/app start:dev
