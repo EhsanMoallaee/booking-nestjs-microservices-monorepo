@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY yarn*.lock ./
 COPY tsconfig.json tsconfig.json
+COPY nest-cli.json nest-cli.json
 
 RUN yarn install
 
@@ -13,7 +14,7 @@ COPY libs libs
 
 RUN cd apps/auth && yarn install
 
-RUN yarn build
+RUN yarn build auth
 
 FROM node:20-alpine as production
 
@@ -31,6 +32,6 @@ RUN yarn install --production=true
 
 COPY --from=development /usr/src/app/dist ./dist
 
-# CMD ["yarn", "start:dev:auth"]
-CMD ["node", "dist/apps/auth/main"]
+CMD ["yarn", "start:dev:auth"]
+# CMD ["node", "dist/apps/auth/main"]
 # CMD yarn --cwd usr/src/app start:dev

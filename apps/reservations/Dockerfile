@@ -5,13 +5,15 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY yarn.lock ./
 COPY tsconfig.json tsconfig.json
+COPY nest-cli.json nest-cli.json
 
 RUN yarn install
 
 COPY apps/reservations apps/reservations
 COPY libs libs
 
-RUN yarn build
+
+RUN cd apps/reservations && yarn build reservations
 
 FROM node:20-alpine as production
 
